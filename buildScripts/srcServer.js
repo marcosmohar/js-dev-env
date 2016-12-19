@@ -1,9 +1,19 @@
 import express from 'express';
 import path from 'path';
 import open from 'open';
+import webpack from 'webpack';
+import config from '../webpack.config.dev'
 
 const port = 3000;
 const app = express();
+const compiler = webpack(config);
+
+
+// le decimos a express que queremos usar webpack middleware
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo:true,
+  publicPath: config.output.publicPath
+}));
 
 // conseguir el path de index.html
 app.get('/', function(req, res){
