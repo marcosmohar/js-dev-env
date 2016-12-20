@@ -8,6 +8,7 @@ const port = 3000;
 const app = express();
 const compiler = webpack(config);
 
+/* eslint-disable no-console */
 
 // le decimos a express que queremos usar webpack middleware
 app.use(require('webpack-dev-middleware')(compiler, {
