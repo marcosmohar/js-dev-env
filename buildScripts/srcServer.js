@@ -21,7 +21,17 @@ app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
-// escucar por peticiones y servirlas al puerto especificado
+app.get('/users', function(req, res){
+  // Agregado por simplicidad. Pretender que es generado por una db
+  res.json([
+    {"id": 1, "firstName":"Bob", "lastName":"Smith", "email":"bob@gmail.com"},
+    {"id": 2, "firstName":"Tammy", "lastName":"Norton", "email":"tnorton@yahoo.com"},
+    {"id": 3, "firstName":"Tina", "lastName":"Lee", "email":"tina.lee@hotmail.com"}
+  ]);
+});
+
+
+// escuchar por peticiones y servirlas al puerto especificado
 app.listen(port, function(err){
   if(err){
     console.log(err);
