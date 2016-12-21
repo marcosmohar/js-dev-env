@@ -1,14 +1,14 @@
 /* eslint-disable no-console */
 
 import webpack from 'webpack';
-import WebpackConfig from '../webpack.config.prod';
+import webpackConfig from '../webpack.config.prod';
 import chalk from 'chalk';
 
 process.env.NODE_ENV = 'production';
 
 console.log(chalk.blue('Generating minified bundle for production. This will take a moment...'));
 
-webpack(WebpackConfig).run((err, stats) => {
+webpack(webpackConfig).run((err, stats) => {
   if(err){ // en caso de un error grave. Detenerse aquí
     console.log(chalk.red(err));
     return 1;

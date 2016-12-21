@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import open from 'open';
+import compression from 'compression';
 
 
 const port = 3000;
@@ -8,11 +9,16 @@ const app = express();
 
 /* eslint-disable no-console */
 
+// habilitar compresion gzip con express
+app.use(compression());
+// para servir archivos estaticos
 app.use(express.static('dist'));
+
+
 
 // conseguir el path de index.html
 app.get('/', function(req, res){
-  res.sendFile(path.join(__dirname, '../src/index.html'));
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 app.get('/users', function(req, res){
